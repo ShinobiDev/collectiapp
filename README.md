@@ -1,66 +1,146 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# collectiapp
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 📖 Descripción del Proyecto
 
-## About Laravel
+`collectiapp` es una aplicación backend (API RESTful) construida con **Laravel 10**, diseñada para la gestión de colecciones. Incorpora una arquitectura limpia con modelos, DTOs (Data Transfer Objects), servicios para la lógica de negocio, y controladores, asegurando un código robusto, mantenible y escalable. La API está protegida con **autenticación JWT** (JSON Web Tokens).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Características Principales
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* **Laravel 10:** Framework PHP moderno y robusto.
+* **Arquitectura Modular:** Separación de responsabilidades con Modelos, DTOs, Servicios y Controladores.
+* **API RESTful:** Endpoints bien definidos para la interacción con los recursos.
+* **Autenticación JWT:** Seguridad de la API mediante tokens.
+* **Validación de Datos:** Uso de Form Requests para una validación de entrada de datos rigurosa.
+* **Manejo de Errores:** Respuestas JSON consistentes con mensajes claros y códigos de estado HTTP semánticos.
+* **Seeders y Factories:** Datos de prueba para un desarrollo y testing ágil.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Empezando
 
-## Learning Laravel
+Sigue estos pasos para tener el proyecto funcionando en tu máquina local.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerrequisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Asegúrate de tener instalado lo siguiente:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* **PHP >= 8.1:** La versión de PHP requerida por Laravel 10.
+* **Composer:** Gestor de dependencias de PHP.
+* **Node.js & npm (opcional, para frontend):** Si planeas integrar un frontend.
+* **Base de Datos:** MySQL, PostgreSQL, SQLite, etc. (MySQL es comúnmente usado).
+* **Servidor Web:** Nginx o Apache (o el servidor de desarrollo de PHP).
 
-## Laravel Sponsors
+### Instalación
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/tu-usuario/collectiapp.git](https://github.com/tu-usuario/collectiapp.git)
+    cd collectiapp
+    ```
 
-### Premium Partners
+2.  **Instalar dependencias de Composer:**
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3.  **Configurar el archivo de entorno (`.env`):**
+    Copia el archivo de ejemplo y genera la clave de la aplicación:
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-## Contributing
+4.  **Configurar la base de datos en `.env`:**
+    Abre el archivo `.env` y ajusta las credenciales de tu base de datos:
+    ```dotenv
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=collectiapp_db # O el nombre de tu base de datos
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Generar la clave secreta de JWT:**
+    ```bash
+    php artisan jwt:secret
+    ```
 
-## Code of Conduct
+6.  **Ejecutar las migraciones y seeders:**
+    Esto creará las tablas en tu base de datos y las poblará con datos de prueba.
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7.  **Iniciar el servidor de desarrollo de Laravel (opcional):**
+    ```bash
+    php artisan serve
+    ```
+    La API estará disponible en `http://127.0.0.1:8000`.
 
-## Security Vulnerabilities
+## ⚙️ Estructura del Proyecto
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+La estructura de carpetas clave para entender `collectiapp` es la siguiente:
 
-## License
+collectiapp/
+├── app/
+│   ├── DTOs/               # Data Transfer Objects (para entrada/salida de datos)
+│   │   └── Status/
+│   │       └── StatusDTO.php
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   └── API/        # Controladores API (como StatusController, AuthController)
+│   │   │       └── StatusController.php
+│   │   │       └── AuthController.php
+│   │   ├── Requests/       # Form Requests (validación de DTOs de entrada)
+│   │   │   └── StoreStatusRequest.php
+│   │   │   └── UpdateStatusRequest.php
+│   │   └── Resources/      # API Resources (opcional, para DTOs de salida)
+│   ├── Models/             # Modelos Eloquent (representan tablas de la DB)
+│   │   └── Status.php
+│   │   └── User.php
+│   │   └── ... (otros modelos)
+│   └── Services/           # Servicios (lógica de negocio y manipulación de datos)
+│       └── StatusService.php
+├── database/
+│   ├── factories/          # Factories para generar datos de prueba
+│   ├── migrations/         # Esquemas de la base de datos
+│   └── seeders/            # Clases para poblar la base de datos
+├── routes/
+│   └── api.php             # Definición de rutas API
+├── .env                    # Variables de entorno
+├── composer.json           # Dependencias de Composer
+└── README.md
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🔐 Autenticación y Rutas Protegidas
+
+La API utiliza JWT para la autenticación. Todas las rutas CRUD para `Status` están protegidas.
+
+### Endpoints de Autenticación (`/api/auth`)
+
+* **`POST /api/auth/register`**: Registra un nuevo usuario.
+    * **Body:** `name`, `type_document_id`, `document`, `email`, `password`, `password_confirmation`, `birthday` (opcional).
+* **`POST /api/auth/login`**: Inicia sesión y devuelve un token JWT.
+    * **Body:** `email`, `password`.
+* **`POST /api/auth/logout`**: Invalida el token JWT del usuario actual.
+* **`POST /api/auth/refresh`**: Refresca un token JWT expirado para obtener uno nuevo.
+* **`GET /api/auth/me`**: Obtiene los datos del usuario autenticado.
+
+### Rutas Protegidas (`/api/statuses`)
+
+Estas rutas requieren un token JWT válido en el encabezado `Authorization: Bearer <your_token>`.
+
+* **`GET /api/statuses`**: Obtiene todos los estados.
+* **`POST /api/statuses`**: Crea un nuevo estado.
+    * **Body:** `name`.
+* **`GET /api/statuses/{id}`**: Obtiene un estado por su ID.
+* **`PUT /api/statuses/{id}`**: Actualiza un estado existente.
+    * **Body:** `name`.
+* **`DELETE /api/statuses/{id}`**: Elimina un estado.
+
+## 🤝 Contribuciones
+
+Las contribuciones son bienvenidas. Si encuentras un error o tienes una sugerencia, por favor abre un *issue* o envía un *pull request*.
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
+
