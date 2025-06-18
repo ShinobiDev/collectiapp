@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTOs\Category;
+namespace App\DTOs\Editorial;
 
 class EditorialDTO
 {

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreStatusRequest;  // Controlador de validaciones
+use App\Http\Requests\Status\StoreStatusRequest;
+use App\Http\Requests\Status\UpdateStatusRequest;
 use App\Models\Status;
 use App\Services\StatusService;
 use App\DTOs\Status\StatusDTO;
@@ -53,7 +54,7 @@ class StatusController extends Controller
         }
     }
 
-    public function update(StoreStatusRequest $request, $id)
+    public function update(UpdateStatusRequest $request, $id)
     {
         try {
             $status = $this->statusService->getById($id);
